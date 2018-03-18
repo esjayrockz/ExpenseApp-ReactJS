@@ -1,19 +1,48 @@
 class BucketListApp extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+    this.handlePick = this.handlePick.bind(this);
+    this.state = {
+      options: ['thing one', 'thing two', 'thing three']
+    };
+  }
+
+  handlePick(){
+      const randomNum = Math.floor(Math.random() * this.state.options.length);
+      alert(this.state.options[randomNum]);
+  }
+
+  handleDeleteOptions(){
+    this.setState(()=>{
+      return {
+      options: []
+      };
+    });
+  }
+
+
   render(){
 
-    const title = 'BucketListApp';
-    const subtitle = 'Create your bucket list.';
-    const options = ['thing one','thing two', 'thing four'];
-    return (
-    <div>
-      <Header title={title} subtitle = {subtitle}/>
-      <Action />
-      <Options options={options}/>
-      <AddOption />
-    </div>
-  );
-  };
-}
+      const title = 'BucketListApp';
+      const subtitle = 'Create your bucket list.';
+
+      return (
+      <div>
+        <Header title={title} subtitle = {subtitle}/>
+        <Action
+          hasOptions={this.state.options.length>0}
+          handlePick={this.handlePick}
+        />
+        <Options
+          options={this.state.options}
+          handleDeleteOptions={this.handleDeleteOptions}
+        />
+        <AddOption />
+      </div>
+    );
+    };
+  }
 
 class Header extends React.Component{
 
@@ -30,28 +59,28 @@ class Header extends React.Component{
 }
 
 class Action extends React.Component{
-  handlePick(){
-    alert('Handle pick');
-  }
+
 
   render(){
     return (
       <div>
-        <button onClick={this.handlePick}>Which one should I do now?</button>
+        <button
+          onClick={this.props.handlePick}
+          disabled={!this.props.hasOptions}>
+          Which one should I do now?
+        </button>
+
       </div>
     );
   }
 }
 
 class Options extends React.Component{
-  removeAll(){
-    const text = 'List cleared';
-    alert(text);
-  }
+
   render(){
     return (
       <div>
-        <button onClick={this.removeAll}>Clear list</button>
+        <button onClick={this.props.handleDeleteOptions}>Clear list</button>
         {
           this.props.options.map((option)=><Option key={option} optionText={option}/>)
         }
