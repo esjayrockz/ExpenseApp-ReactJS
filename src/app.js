@@ -1,11 +1,28 @@
 class BucketListApp extends React.Component{
+
   constructor(props){
     super(props);
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
     this.handlePick = this.handlePick.bind(this);
+    this.handleAddOption = this.handleAddOption.bind(this);
     this.state = {
-      options: ['thing one', 'thing two', 'thing three']
+      options: []
     };
+  }
+
+  handleAddOption(option){
+    if(!option){
+      return 'Enter valid value to add item';
+    }
+    else if(this.state.options.indexOf(option) > -1){
+      return 'Item already exists';
+    }
+
+    this.setState((prevState)=>{
+      return{
+      options: prevState.options.concat(option)
+    };
+  });
   }
 
   handlePick(){
@@ -20,7 +37,6 @@ class BucketListApp extends React.Component{
       };
     });
   }
-
 
   render(){
 
@@ -38,95 +54,87 @@ class BucketListApp extends React.Component{
           options={this.state.options}
           handleDeleteOptions={this.handleDeleteOptions}
         />
-        <AddOption />
+        <AddOption
+        handleAddOption={this.handleAddOption}
+        />
       </div>
     );
     };
   }
 
-class Header extends React.Component{
+const Header = (props) => {
+  const styles = {color:'red'};
+  return (
+    <div style={styles}>
+    <h1>{props.title}</h1>
+    <h2>{props.subtitle}</h2>
+    </div>
+  );
+};
 
-  render(){
-    const styles = {color:'red'};
+const Action = (props) => {
+  return (
+    <div>
+      <button
+        onClick={props.handlePick}
+        disabled={!props.hasOptions}>
+        Which one should I do now?
+      </button>
+    </div>
+  );
+};
 
-    return (
-      <div style={styles}>
-      <h1>{this.props.title}</h1>
-      <h2>{this.props.subtitle}</h2>
-      </div>
-    );
-  }
-}
+const Options = (props) =>{
+  return (
+    <div>
+      <button onClick={props.handleDeleteOptions}>Clear list</button>
+      {
+        props.options.map((option)=><Option key={option} optionText={option}/>)
+      }
+    </div>
+  );
+};
 
-class Action extends React.Component{
-
-
-  render(){
-    return (
-      <div>
-        <button
-          onClick={this.props.handlePick}
-          disabled={!this.props.hasOptions}>
-          Which one should I do now?
-        </button>
-
-      </div>
-    );
-  }
-}
-
-class Options extends React.Component{
-
-  render(){
-    return (
-      <div>
-        <button onClick={this.props.handleDeleteOptions}>Clear list</button>
-        {
-          this.props.options.map((option)=><Option key={option} optionText={option}/>)
-        }
-
-      </div>
-    );
-  }
-}
-
-class Option extends React.Component{
-  render(){
-    return (
-      <div>
-        <p>{this.props.optionText}</p>
-      </div>
-    );
-  }
-}
-
-
+const Option = (props) => {
+  return (
+    <div>
+      <p>{props.optionText}</p>
+    </div>
+  );
+};
 
 
 class AddOption extends React.Component{
 
+  constructor(props){
+    super(props);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.state = {
+      error: undefined
+    };
+  }
+
   onFormSubmit(event){
     event.preventDefault();
-    console.log('Form submitted');
     const option = event.target.elements.option.value.trim();
-    if(option){
-      alert(option);
-      // app.options.push(option);
-      event.target.elements.option.value='';
-      console.log(event);
-      // renderReact();
-    }
+    const error = this.props.handleAddOption(option);
+    this.setState(()=>{
+      return { error };
+    });
   }
 
   render(){
-
     return (
+      <div>
+        {this.state.error && <p>{this.state.error}</p>}
       <form onSubmit={this.onFormSubmit}>
         <input type="text" name="option"/>
         <button>Add to list</button>
       </form>
+      </div>
     );
   }
 }
 
-  ReactDOM.render(<BucketListApp />, document.getElementById('app'));
+
+ReactDOM.render(<BucketListApp />, document.getElementById('app'));
