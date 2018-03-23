@@ -7,7 +7,7 @@ class BucketListApp extends React.Component{
     this.handleAddOption = this.handleAddOption.bind(this);
     this.handleDeleteOption = this.handleDeleteOption.bind(this);
     this.state = {
-      options: []
+      options: props.options
     };
   }
 
@@ -41,7 +41,7 @@ class BucketListApp extends React.Component{
 
       return (
       <div>
-        <Header title={title} subtitle = {subtitle}/>
+        <Header subtitle={subtitle}/>
         <Action
           hasOptions={this.state.options.length>0}
           handlePick={this.handlePick}
@@ -59,14 +59,26 @@ class BucketListApp extends React.Component{
     };
   }
 
+  BucketListApp.defaultProps = {
+    options: []
+  };
+
+/*Functional stateless components as below should be used if no state is required to be maintained
+ If they use props, take props as parameters instead of this.props
+ Access these props using props instead of this.props */
+
 const Header = (props) => {
   const styles = {color:'red'};
   return (
     <div style={styles}>
     <h1>{props.title}</h1>
-    <h2>{props.subtitle}</h2>
+    {props.subtitle && <h2>{props.subtitle}</h2>}
     </div>
   );
+};
+
+Header.defaultProps = {
+  title: 'Bucket List App'
 };
 
 const Action = (props) => {
