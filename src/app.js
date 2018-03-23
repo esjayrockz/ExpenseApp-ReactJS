@@ -5,6 +5,7 @@ class BucketListApp extends React.Component{
     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
     this.handlePick = this.handlePick.bind(this);
     this.handleAddOption = this.handleAddOption.bind(this);
+    this.handleDeleteOption = this.handleDeleteOption.bind(this);
     this.state = {
       options: []
     };
@@ -29,8 +30,8 @@ class BucketListApp extends React.Component{
     this.setState(()=>({ options: [] }));
   }
 
-  handleDeleteOption(option){
-    console.log(option);
+  handleDeleteOption(param){
+    this.setState((prevState)=>({options: prevState.options.filter((option) => option!== param) }));
   }
 
   render(){
@@ -100,8 +101,12 @@ const Options = (props) =>{
 const Option = (props) => {
   return (
     <div>
-      <p>{props.optionText}</p>
-      <button onClick={props.handleDeleteOption}>Remove</button>
+      {props.optionText}
+      <button onClick={(e)=>{
+          props.handleDeleteOption(props.optionText);
+        }}>
+        Remove
+      </button>
     </div>
   );
 };
