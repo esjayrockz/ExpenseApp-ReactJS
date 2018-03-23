@@ -20,7 +20,7 @@ var BucketListApp = function (_React$Component) {
     _this.handlePick = _this.handlePick.bind(_this);
     _this.handleAddOption = _this.handleAddOption.bind(_this);
     _this.state = {
-      options: []
+      options: props.options
     };
     return _this;
   }
@@ -65,7 +65,7 @@ var BucketListApp = function (_React$Component) {
       return React.createElement(
         'div',
         null,
-        React.createElement(Header, { title: title, subtitle: subtitle }),
+        React.createElement(Header, { subtitle: subtitle }),
         React.createElement(Action, {
           hasOptions: this.state.options.length > 0,
           handlePick: this.handlePick
@@ -84,6 +84,14 @@ var BucketListApp = function (_React$Component) {
   return BucketListApp;
 }(React.Component);
 
+BucketListApp.defaultProps = {
+  options: []
+};
+
+/*Functional stateless components as below should be used if no state is required to be maintained
+ If they use props, take props as parameters instead of this.props
+ Access these props using props instead of this.props */
+
 var Header = function Header(props) {
   var styles = { color: 'red' };
   return React.createElement(
@@ -94,12 +102,16 @@ var Header = function Header(props) {
       null,
       props.title
     ),
-    React.createElement(
+    props.subtitle && React.createElement(
       'h2',
       null,
       props.subtitle
     )
   );
+};
+
+Header.defaultProps = {
+  title: 'Bucket List App'
 };
 
 var Action = function Action(props) {
