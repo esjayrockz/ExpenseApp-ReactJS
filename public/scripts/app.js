@@ -33,11 +33,8 @@ var BucketListApp = function (_React$Component) {
       } else if (this.state.options.indexOf(option) > -1) {
         return 'Item already exists';
       }
-
       this.setState(function (prevState) {
-        return {
-          options: prevState.options.concat(option)
-        };
+        return { options: prevState.options.concat(option) };
       });
     }
   }, {
@@ -50,10 +47,13 @@ var BucketListApp = function (_React$Component) {
     key: 'handleDeleteOptions',
     value: function handleDeleteOptions() {
       this.setState(function () {
-        return {
-          options: []
-        };
+        return { options: [] };
       });
+    }
+  }, {
+    key: 'handleDeleteOption',
+    value: function handleDeleteOption(option) {
+      console.log(option);
     }
   }, {
     key: 'render',
@@ -72,7 +72,8 @@ var BucketListApp = function (_React$Component) {
         }),
         React.createElement(Options, {
           options: this.state.options,
-          handleDeleteOptions: this.handleDeleteOptions
+          handleDeleteOptions: this.handleDeleteOptions,
+          handleDeleteOption: this.handleDeleteOption
         }),
         React.createElement(AddOption, {
           handleAddOption: this.handleAddOption
@@ -126,7 +127,11 @@ var Options = function Options(props) {
       'Clear list'
     ),
     props.options.map(function (option) {
-      return React.createElement(Option, { key: option, optionText: option });
+      return React.createElement(Option, {
+        key: option,
+        optionText: option,
+        handleDeleteOption: props.handleDeleteOption
+      });
     })
   );
 };
@@ -139,6 +144,11 @@ var Option = function Option(props) {
       'p',
       null,
       props.optionText
+    ),
+    React.createElement(
+      'button',
+      { onClick: props.handleDeleteOption },
+      'Remove'
     )
   );
 };

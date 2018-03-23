@@ -17,12 +17,7 @@ class BucketListApp extends React.Component{
     else if(this.state.options.indexOf(option) > -1){
       return 'Item already exists';
     }
-
-    this.setState((prevState)=>{
-      return{
-      options: prevState.options.concat(option)
-    };
-  });
+    this.setState((prevState)=>({ options: prevState.options.concat(option) }));
   }
 
   handlePick(){
@@ -31,11 +26,11 @@ class BucketListApp extends React.Component{
   }
 
   handleDeleteOptions(){
-    this.setState(()=>{
-      return {
-      options: []
-      };
-    });
+    this.setState(()=>({ options: [] }));
+  }
+
+  handleDeleteOption(option){
+    console.log(option);
   }
 
   render(){
@@ -53,6 +48,7 @@ class BucketListApp extends React.Component{
         <Options
           options={this.state.options}
           handleDeleteOptions={this.handleDeleteOptions}
+          handleDeleteOption={this.handleDeleteOption}
         />
         <AddOption
         handleAddOption={this.handleAddOption}
@@ -89,7 +85,13 @@ const Options = (props) =>{
     <div>
       <button onClick={props.handleDeleteOptions}>Clear list</button>
       {
-        props.options.map((option)=><Option key={option} optionText={option}/>)
+        props.options.map((option)=>(
+          <Option
+            key={option}
+            optionText={option}
+            handleDeleteOption={props.handleDeleteOption}
+          />
+        ))
       }
     </div>
   );
@@ -99,6 +101,7 @@ const Option = (props) => {
   return (
     <div>
       <p>{props.optionText}</p>
+      <button onClick={props.handleDeleteOption}>Remove</button>
     </div>
   );
 };
@@ -118,9 +121,7 @@ class AddOption extends React.Component{
     event.preventDefault();
     const option = event.target.elements.option.value.trim();
     const error = this.props.handleAddOption(option);
-    this.setState(()=>{
-      return { error };
-    });
+    this.setState(()=> ({ error }));
   }
 
   render(){
