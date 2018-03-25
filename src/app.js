@@ -7,7 +7,8 @@ class BucketListApp extends React.Component{
     this.handleAddOption = this.handleAddOption.bind(this);
     this.handleDeleteOption = this.handleDeleteOption.bind(this);
     this.state = {
-      options: props.options
+      //options: props.options
+      options: []
     };
   }
 
