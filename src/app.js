@@ -11,6 +11,13 @@ class BucketListApp extends React.Component{
     };
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.options.length !== this.state.options.length){
+      console.log('Saving data');
+    }
+
+  }
+
   handleAddOption(option){
     if(!option){
       return 'Enter valid value to add item';

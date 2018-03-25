@@ -27,6 +27,13 @@ var BucketListApp = function (_React$Component) {
   }
 
   _createClass(BucketListApp, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.options.length !== this.state.options.length) {
+        console.log('Saving data');
+      }
+    }
+  }, {
     key: 'handleAddOption',
     value: function handleAddOption(option) {
       if (!option) {
