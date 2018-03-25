@@ -83,13 +83,13 @@ class BucketListApp extends React.Component{
     };
   }
 
-  BucketListApp.defaultProps = {
-    options: []
-  };
+  // BucketListApp.defaultProps = {
+  //   options: []
+  // };
 
-/*Functional stateless components as below should be used if no state is required to be maintained
- If they use props, take props as parameters instead of this.props
- Access these props using props instead of this.props */
+/*Functional stateless components as below should be used if no state,
+function handlers, lifecycle-aspects is required since they will be faster than class components.
+ If they use props, access these props using props instead of this.props */
 
 const Header = (props) => {
   const styles = {color:'red'};
