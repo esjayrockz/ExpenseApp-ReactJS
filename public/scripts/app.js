@@ -119,7 +119,7 @@ var BucketListApp = function (_React$Component) {
 // };
 
 /*Functional stateless components as below should be used if no state,
-function handlers, lifecycle-aspects is required since they will be faster than class components.
+function handlers, lifecycle-aspects are required since they will be faster than class components.
  If they use props, access these props using props instead of this.props */
 
 var Header = function Header(props) {
