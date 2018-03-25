@@ -27,6 +27,23 @@ var Counter = function (_React$Component) {
   }
 
   _createClass(Counter, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var count = parseInt(localStorage.getItem('count'));
+      if (count) {
+        this.setState(function () {
+          return { count: count };
+        });
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.count !== this.state.count) {
+        localStorage.setItem('count', this.state.count);
+      }
+    }
+  }, {
     key: 'handleAddOne',
     value: function handleAddOne() {
       this.setState(function (prevState) {
