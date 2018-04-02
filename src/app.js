@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import BucketListApp from './components/BucketListApp'; //No need to use .js at the end here when using Webpack
+import './styles/styles.scss'
 ReactDOM.render(<BucketListApp />, document.getElementById('app'));
 
 
