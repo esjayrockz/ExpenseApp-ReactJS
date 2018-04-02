@@ -15,7 +15,7 @@ module.exports = {
       test: /\.js$/, //Regex for only JS files to be passed through babel and node_modules dont need to be passed through babel
       exclude: /node_modules/
     },{
-      test: /\.scss/,
+      test: /\.s?css/,
       use: [
         'style-loader',
         'css-loader',
