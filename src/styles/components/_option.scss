@@ -9,5 +9,6 @@
   color: white;
   font-weight: 500;
   font-size: 2rem;
-  margin: 0;
+  margin: $m-size;
+  word-break: break-all;
 }
