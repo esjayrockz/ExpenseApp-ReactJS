@@ -4,19 +4,19 @@
 }
 
 .widget__message {
+  border-bottom: 1px solid lighten($light-blue, 10%);
   color: $off-purple;
   margin: 0;
   padding: $l-size;
   text-align: center;
-  border-bottom: 1px solid lighten($light-blue, 10%);
 }
 
 .widget-header {
   background: $blue;
   color: $off-purple;
-  padding: $m-size;
   display: flex;
   justify-content: space-between;
+  padding: $m-size;
 }
 
 .widget-header__title {
