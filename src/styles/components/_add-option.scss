@@ -8,6 +8,7 @@
 
 .add-option {
   display: flex;
+  flex-direction: column; //Stacked up column-wise for mobile-devices
   padding: $m-size;
 }
 
@@ -16,7 +17,17 @@
   border: none;
   border-bottom: .3rem solid darken($dark-blue, 10%);
   color: $off-purple;
-  flex-grow: 1;
-  margin-right: $s-size;
+  flex-grow: 1; //Make input form box grow as screen grows
+  margin: 0 0 $s-size 0;
   padding: $s-size;
+}
+
+@media(min-width: $desktop-size) {
+  .add-option {
+    flex-direction: row; //Stacked up row-wise for desktop-devices
+  }
+
+  .add-option__input {
+    margin: 0 $s-size 0 0;
+  }
 }

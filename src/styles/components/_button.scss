@@ -6,7 +6,7 @@
   color: white;
   font-size: $l-size;
   font-weight: bold;
-  margin-bottom: $xl-size;
+  margin-bottom: $m-size;// For mobile-devices
   padding: 2.4rem;
   width: 100%;
 }
@@ -14,6 +14,13 @@
 .big-button:disabled {
   opacity: .5;
 }
+
+@media(min-width: $desktop-size){
+  .big-button {
+      margin-bottom: $xl-size;// For desktop-devices
+  }
+}
+
 
 //Button
 
