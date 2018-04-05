@@ -10,24 +10,24 @@ export default class BucketListApp extends React.Component{
   state = {
     //options: props.options
     options: [],
-    selectedOption: undefined
+    selectedOption: undefined //Modal prop which decides if modal should be open or not
   };
 
   handleClearModal = () => {
-    this.setState(() => ({ selectedOption: undefined }));
+    this.setState(() => ({ selectedOption: undefined })); //This will close modal
   };
 
   handleAddOption = (option) => {
     if(!option){
-      return 'Enter valid value to add item';
+      return 'Enter valid value to add item'; //If empty value is submitted
     }
-    else if(this.state.options.indexOf(option) > -1){
+    else if(this.state.options.indexOf(option) > -1){ //Returns more than 1 if item found, else -1
       return 'Item already exists';
     }
-    this.setState((prevState)=>({ options: prevState.options.concat(option) }));
+    this.setState((prevState)=>({ options: prevState.options.concat(option) })); //Add item to the options array
   };
 
-  handlePick = () => {
+  handlePick = () => { // Choose random option from all items
       const randomNum = Math.floor(Math.random() * this.state.options.length);
       this.setState(() => ({ selectedOption: this.state.options[randomNum] }));
   };
@@ -36,11 +36,11 @@ export default class BucketListApp extends React.Component{
     this.setState(()=>({ options: [] }));
   };
 
-  handleDeleteOption = (param) => {
+  handleDeleteOption = (param) => { //Keep items in array which do no match parameter
     this.setState((prevState)=>({options: prevState.options.filter((option) => option!== param) }));
   };
 
-  componentDidMount(){
+  componentDidMount(){ //Take items from localStorage and add it to options state to show the list
     try{
       const json = localStorage.getItem('options');
       const options = JSON.parse(json);
@@ -56,7 +56,7 @@ export default class BucketListApp extends React.Component{
   componentDidUpdate(prevProps, prevState){
     if(prevState.options.length !== this.state.options.length){
       const json = JSON.stringify(this.state.options);
-      localStorage.setItem('options', json);
+      localStorage.setItem('options', json); //Update localStorage every time options array length changes
     }
   }
 
@@ -73,16 +73,16 @@ export default class BucketListApp extends React.Component{
           hasOptions={this.state.options.length>0}
           handlePick={this.handlePick}
         />
-        <div className="widget">
-          <Options
-            options={this.state.options}
-            handleDeleteOptions={this.handleDeleteOptions}
-            handleDeleteOption={this.handleDeleteOption}
-          />
-          <AddOption
-            handleAddOption={this.handleAddOption}
-          />
-        </div>
+          <div className="widget">
+            <Options
+              options={this.state.options}
+              handleDeleteOptions={this.handleDeleteOptions}
+              handleDeleteOption={this.handleDeleteOption}
+            />
+            <AddOption
+              handleAddOption={this.handleAddOption}
+            />
+          </div>
         </div>
         <OptionModal
           selectedOption={this.state.selectedOption}

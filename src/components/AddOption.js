@@ -8,12 +8,12 @@ export default class AddOption extends React.Component{
 
   //onFormSubmit will be triggered when an item is added to list.
   onFormSubmit = (event) => {
-    event.preventDefault();
-    const option = event.target.elements.option.value.trim();
-    const error = this.props.handleAddOption(option);
+    event.preventDefault(); //prevent form submission's default action
+    const option = event.target.elements.option.value.trim(); //trim the spaces of the input value and save it
+    const error = this.props.handleAddOption(option); //error will remain undefined if item is successfully added
     this.setState(()=> ({ error }));
     if(!error){
-      event.target.elements.option.value = '';
+      event.target.elements.option.value = ''; //This will clear the input form if no error
     }
   };
 
