@@ -3,7 +3,7 @@ import AddOption from './AddOption';
 import Header from './Header';
 import Action from './Action';
 import Options from './Options';
-import OptionModal from './OptionModal'
+import OptionModal from './OptionModal';
 
 export default class BucketListApp extends React.Component{
 
