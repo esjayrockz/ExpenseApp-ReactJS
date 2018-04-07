@@ -9,6 +9,7 @@
   margin-bottom: $m-size;// For mobile-devices
   padding: 2.4rem;
   width: 100%;
+  outline: none;
 }
 
 .big-button:disabled {
@@ -31,6 +32,7 @@
   color: white;
   font-weight: 500;
   padding: $s-size;
+  outline: none;
 }
 
 .button--link {
