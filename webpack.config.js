@@ -1,7 +1,4 @@
-//entry -> output
-
 const path = require('path');
-
 
 module.exports = {
   entry: './src/app.js',
@@ -23,7 +20,7 @@ module.exports = {
       ] //use is the array for multiple loaders instead of the babel-loader like above
     }]
   },
-    mode: 'development', // | 'production' | 'none'
+    //mode: 'development', // | 'production' | 'none'
     devtool: 'cheap-module-eval-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public')
