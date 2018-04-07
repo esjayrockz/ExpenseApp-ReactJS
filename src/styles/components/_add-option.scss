@@ -20,6 +20,7 @@
   flex-grow: 1; //Make input form box grow as screen grows
   margin: 0 0 $s-size 0;
   padding: $s-size;
+  height: 3rem;
 }
 
 @media(min-width: $desktop-size) {

@@ -314,7 +314,8 @@ template {
   color: #a5afd7;
   flex-grow: 1;
   margin: 0 0 1.2rem 0;
-  padding: 1.2rem; }
+  padding: 1.2rem;
+  height: 3rem; }
 
 @media (min-width: 45rem) {
   .add-option {
