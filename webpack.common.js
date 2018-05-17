@@ -3,7 +3,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CSSExtract = new ExtractTextPlugin('styles.css');
 
 module.exports = {
- entry: './src/app.js',
+ entry: './src/playground/hoc.js',
  output: {
    path: path.join(__dirname, 'public'),
    filename: 'bundle.js'
