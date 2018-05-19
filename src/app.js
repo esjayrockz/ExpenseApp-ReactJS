@@ -20,7 +20,7 @@ store.subscribe(()=>{
 
 store.dispatch(addExpense({description:'Water bill', amount: 5000, createdAt: 5000}));
 store.dispatch(addExpense({description:'Gas bill', amount: 3000, createdAt: 10000}));
-store.dispatch(setTextFilter('bill'));
+// store.dispatch(setTextFilter('bill'));
 store.dispatch(setTextFilter('water'));
 
 const jsx = (
