@@ -19,12 +19,23 @@ const Info = (props) => (
 const withAdminWarning = (WrappedComponent) => {
   return (props)=>(  //This HOC has to return another Component(function here because of stateless functional component)
     <div>
-      <p>This is private info. Please don't share</p>
-      <WrappedComponent/>
+      {props.isAdmin && <p>This is private info. Please don't share</p>}
+      <WrappedComponent {...props}/>
     </div>
   );
 };
 
-const AdminInfo = withAdminWarning(Info);
+const requireAuthentication = (WrappedComponent) => {
+  return (props)=>(  //This HOC has to return another Component(function here because of stateless functional component)
+    <div>
+      {props.isAuthenticated ? <WrappedComponent {...props}/> : <p>{props.message}</p>}
+    </div>
+  );
+};
 
-ReactDOM.render(<AdminInfo info="Hmm, check this out"/>, document.getElementById('app'));
+const AdminInfo = withAdminWarning(Info); //AdminInfo stores the returned HOC
+const AuthInfo = requireAuthentication(Info);
+
+ReactDOM.render(<AuthInfo isAuthenticated ={false} info ="vxcxvccx" message="You are not authenticated"/>, document.getElementById('app'));
+
+//AdminInfo stores the returned HOC and so it makes sense to pass props there as above
