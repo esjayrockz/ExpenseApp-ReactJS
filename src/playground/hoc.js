@@ -34,8 +34,8 @@ const requireAuthentication = (WrappedComponent) => {
 };
 
 const AdminInfo = withAdminWarning(Info); //AdminInfo stores the returned HOC
-const AuthInfo = requireAuthentication(Info);
+const AuthInfo = requireAuthentication(Info); //AuthInfo stores the returned HOC
 
 ReactDOM.render(<AuthInfo isAuthenticated ={false} info ="vxcxvccx" message="You are not authenticated"/>, document.getElementById('app'));
 
-//AdminInfo stores the returned HOC and so it makes sense to pass props there as above
+//AuthInfo stores the returned HOC and so it makes sense to pass props there as above
