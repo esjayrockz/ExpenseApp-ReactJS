@@ -16,10 +16,12 @@ const ExpensesList = (props) => (
   </div>
 );
 
-const ConnectedExpensesList = connect((state)=>{
+const mapStateToProps = (state)=>{
   return {
     expenses: visibleExpenses(state.expenses, state.filters)
   };
-})(ExpensesList);
+};
+
+const ConnectedExpensesList = connect(mapStateToProps)(ExpensesList);
 
 export default ConnectedExpensesList;
