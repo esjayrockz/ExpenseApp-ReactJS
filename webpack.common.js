@@ -30,7 +30,7 @@ module.exports = {
            }
          }
        ]
-     }) //use is the array for multiple loaders instead of the babel-loader like above
+     }) //use is the array for multiple loaders instead of the loader for babel-loader like above
    }]
  },
  plugins: [CSSExtract]
