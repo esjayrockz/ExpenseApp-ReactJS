@@ -11,6 +11,17 @@ export default class ExpenseForm extends React.Component {
             placeholder="Description"
             autoFocus
           />
+          <input
+            type="number"
+            placeholder="Amount"
+          />
+          <textarea
+            placeholder="Add a note for your expense (optional)"
+            >
+            </textarea>
+          <button>
+            Add Expense
+          </button>
         </form>
       </div>
     )
