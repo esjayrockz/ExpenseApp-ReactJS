@@ -17,7 +17,7 @@ const Info = (props) => (
 
 
 const withAdminWarning = (WrappedComponent) => {
-  return (props)=>(  //This HOC has to return another Component(function here because of stateless functional component)
+  return (props)=>(  //This HOC has to return another Component(it's a function here because of stateless functional component)
     <div>
       {props.isAdmin && <p>This is private info. Please don't share</p>}
       <WrappedComponent {...props}/>
@@ -26,7 +26,7 @@ const withAdminWarning = (WrappedComponent) => {
 };
 
 const requireAuthentication = (WrappedComponent) => {
-  return (props)=>(  //This HOC has to return another Component(function here because of stateless functional component)
+  return (props)=>(  //This HOC has to return another Component(it's a function here because of stateless functional component)
     <div>
       {props.isAuthenticated ? <WrappedComponent {...props}/> : <p>{props.message}</p>}
     </div>
