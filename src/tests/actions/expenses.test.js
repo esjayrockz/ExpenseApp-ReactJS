@@ -14,8 +14,40 @@ test('should setup edit expense action object', ()=>{
     type: 'EDIT_EXPENSE',
     id: '136bcd',
     updates: {
-      note: 'Rent expensee',
+      note: 'Rent expense',
       amount: 13500
+    }
+  });
+});
+
+test('should setup add expense action object with provided values', ()=>{
+  const expenseData = {
+    description: 'Utilities',
+    amount: 109500,
+    createdAt: 1000,
+    note: 'Last months Utilities'
+  };
+  const action = addExpense(expenseData);
+  expect(action).toEqual({
+    type: 'ADD_EXPENSE',
+    expense: {
+      ...expenseData,
+    id: expect.any(String)
+    }
+  });
+});
+
+test('should setup add expense action object with default values', ()=>{
+
+  const action = addExpense();
+  expect(action).toEqual({
+    type: 'ADD_EXPENSE',
+    expense: {
+      id: expect.any(String),
+      description: '',
+      amount: 0,
+      createdAt: 0,
+      note: ''
     }
   });
 });
