@@ -7,7 +7,7 @@ const filtersReducerDefaultState = {
   endDate: moment().endOf('month')
 };
 
-export default (state = filtersReducerDefaultState, action) =>{
+export default (state = filtersReducerDefaultState, action) =>{ //If only no or undefined state is passed, will it take the default state
   switch(action.type){
     case 'SET_TEXT_FILTER':
     return {
