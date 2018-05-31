@@ -8,6 +8,7 @@ import { setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate } fro
 import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import 'react-dates/lib/css/_datepicker.css';
 
 const store = configureStore();
 
@@ -22,7 +23,7 @@ store.dispatch(addExpense({description:'Water bill', amount: 5000, createdAt: 50
 store.dispatch(addExpense({description:'Gas bill', amount: 3000, createdAt: 10000}));
 store.dispatch(addExpense({description:'Rent', amount: 109500, createdAt: 50000}));
 //store.dispatch(setTextFilter('bill'));
-// store.dispatch(setTextFilter('water'));
+
 
 const jsx = (
   <Provider store={ store }>
