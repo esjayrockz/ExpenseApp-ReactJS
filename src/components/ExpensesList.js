@@ -5,14 +5,21 @@ import visibleExpenses from '../selectors/expenses';
 
 export const ExpensesList = (props) => (
   <div>
-    <h1>List of Expenses</h1>
 
-    {props.expenses.map((expense, index)=>(//map will take array of objects and return array of instances of expenseList item
-      <ExpenseItem
-        key = {expense.id}
-        {...expense}
-      />
-    ))}
+    {
+      props.expenses.length === 0 ? (
+        <p>No expenses</p>
+      ):
+      (
+        props.expenses.map((expense, index)=>(//map will take array of objects and return array of instances of expenseList item
+          <ExpenseItem
+            key = {expense.id}
+            {...expense}
+          />
+        ))
+      )
+    }
+
   </div>
 );
 
