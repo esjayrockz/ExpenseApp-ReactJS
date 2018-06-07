@@ -5,6 +5,7 @@ import { SingleDatePicker } from 'react-dates';
 
 export default class ExpenseForm extends React.Component {
 
+  //In order to use props in setting default state, we need to use this constructor method
   constructor(props){
     super(props);
     this.state = {
@@ -58,7 +59,6 @@ export default class ExpenseForm extends React.Component {
         createdAt: this.state.createdAt.valueOf(),
         note: this.state.note
       });
-      console.log('Submitted');
     }
   }
 
