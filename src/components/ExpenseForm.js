@@ -37,7 +37,7 @@ export default class ExpenseForm extends React.Component {
   };
 
   onDateChange = (createdAt) => {
-    if(createdAt){
+    if(createdAt){  //This condition is to make sure that the user cant select and delete the date
       this.setState(()=>({createdAt}));
     }
   };
