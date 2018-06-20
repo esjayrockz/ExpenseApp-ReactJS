@@ -13,20 +13,23 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref('expenses').
-  on('child_removed', (snapshot) => {
-    console.log(snapshot.key, 'description: ', snapshot.val().description)
-  });
+export { firebase, database as default };
 
-  database.ref('expenses').
-    on('child_changed', (snapshot) => {
-      console.log(snapshot.key, snapshot.val())
-    });
+// database.ref('expenses').
+//   on('child_removed', (snapshot) => {
+//     console.log(snapshot.key, 'description: ', snapshot.val().description)
+//   });
+//
+// database.ref('expenses').
+//   on('child_changed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val())
+//   });
+//
+// database.ref('expenses').
+//   on('child_added', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val())
+//   });
 
-    database.ref('expenses').
-      on('child_added', (snapshot) => {
-        console.log(snapshot.key, snapshot.val())
-      });
 
 // const expenses = [];
 //
@@ -55,12 +58,12 @@ database.ref('expenses').
 //   createdAt: 43212431234
 // });
 //
-database.ref('expenses').push({
-  description: 'chair',
-  amount: 1000,
-  note: '',
-  createdAt: 45634536654
-});
+// database.ref('expenses').push({
+//   description: 'chair',
+//   amount: 1000,
+//   note: '',
+//   createdAt: 45634536654
+// });
 //
 // database.ref('expenses').push({
 //   description: 'white table',
