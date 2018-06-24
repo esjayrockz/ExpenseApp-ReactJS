@@ -18,7 +18,7 @@ const jsx = (
 );
 
 ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
-
+console.log('Branching');
 store.dispatch(startSetExpenses()).then(() => {
-  ReactDOM.render(jsx, document.getElementById('app'));  
+  ReactDOM.render(jsx, document.getElementById('app'));
 });
