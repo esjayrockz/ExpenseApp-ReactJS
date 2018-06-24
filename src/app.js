@@ -17,5 +17,5 @@ const jsx = (
     <AppRouter />
   </Provider>
 );
-
+console.log('Branch');
 ReactDOM.render(jsx, document.getElementById('app'));
