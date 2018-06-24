@@ -45,12 +45,6 @@ export { firebase, database as default };
 //     console.log(expenses);
 //   });
 
-
-
-
-
-
-//
 // database.ref('expenses').push({
 //   description: 'table',
 //   amount: 2000,
