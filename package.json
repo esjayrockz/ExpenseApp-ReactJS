@@ -9,7 +9,7 @@
     "build:dev": "webpack --config webpack.dev.js",
     "build:prod": "webpack --config webpack.prod.js",
     "dev-server": "webpack-dev-server --config webpack.dev.js",
-    "test": "jest --config=jest.config.json",
+    "test": "cross-env NODE_ENV=test jest --config=jest.config.json",
     "start": "node server/server.js",
     "heroku-postbuild": "yarn run build:prod"
   },
@@ -37,6 +37,7 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
+    "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
@@ -48,6 +49,7 @@
   },
   "devDependencies": {
     "chalk": "^2.4.1",
+    "cross-env": "^5.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
