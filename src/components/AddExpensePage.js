@@ -6,7 +6,7 @@ import { startAddExpense } from '../actions/expenses';
 export class AddExpensePage extends React.Component {
   onSubmit = (expense) => {
     this.props.startAddExpense(expense);
-    this.props.history.push('/');
+    this.props.history.push('/');//We have access to history props for all components rendered in React Router
   };
 
 render() {

@@ -7,7 +7,7 @@ import { startEditExpense, startRemoveExpense } from '../actions/expenses';
 export class EditExpensePage extends React.Component{
   onSubmit = (expense) => {
     this.props.startEditExpense(this.props.expense.id, expense);
-    this.props.history.push('/');
+    this.props.history.push('/');//We have access to history props for all components rendered in React Router
   };
 
   onClick = ()=>{
