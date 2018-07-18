@@ -18,6 +18,7 @@ const jsx = (
   </Provider>
 );
 let hasRendered = false;
+
 const renderApp = () => {
   if(!hasRendered){
     ReactDOM.render(jsx, document.getElementById('app'));
@@ -43,6 +44,5 @@ firebase.auth().onAuthStateChanged((user) => {
     store.dispatch(logout());
     renderApp();
     history.push('/');
-    console.log('uid',user.uid);
   }
 });
