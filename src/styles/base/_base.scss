@@ -4,8 +4,11 @@ html {
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
+  color: $dark-grey;
+  // font-family: 'Ubuntu', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: $m-size;
+  line-height: 1.6;
   //box-sizing: border-box
 }
 
