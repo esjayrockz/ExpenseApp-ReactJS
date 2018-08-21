@@ -1,0 +1,9 @@
+.button{
+    /* color: #cf3703; */
+    background: $fluorescent-orange;
+    border: none;
+    font-size: $font-l-size;
+    font-weight: 300;
+    border-radius: 5px;
+    padding: $s-size;
+}
