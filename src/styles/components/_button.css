@@ -19,11 +19,11 @@
 }
 
 .button--form{
-  background: #006064;
+  background: $greenish-blue;
   color: white;
 }
 
 .button--remove{
-  background: #888;
+  background: $med-grey;
   /* color: white; */
 }

@@ -12,7 +12,7 @@
 
 
 .box-layout__box{
-  background: fade-out(#f0a678, .15);
+  background: fade-out($faded-orange, .15);
   border-radius: 12px;
   padding: $l-size $m-size;
   text-align: center;
