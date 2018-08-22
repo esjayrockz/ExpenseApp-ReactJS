@@ -17,3 +17,13 @@
   background: none;
   color: white;
 }
+
+.button--form{
+  background: #006064;
+  color: white;
+}
+
+.button--remove{
+  background: #888;
+  /* color: white; */
+}
