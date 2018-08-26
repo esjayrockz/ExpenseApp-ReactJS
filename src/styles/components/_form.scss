@@ -1,7 +1,7 @@
 .form{
   display: flex;
   flex-direction: column;
-  >* {
+  >* { //Selector (star -> all) to select all direct children(i.e inputs here)
     margin-bottom: $m-size;
   }
 }
