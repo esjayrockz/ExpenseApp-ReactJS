@@ -33,7 +33,7 @@ export class ExpensesListFilters extends React.Component {
     return (
 
       <div className="content-container">
-        <div>Set Search Filters</div>
+        <p>Set Search Filters</p>
         <div className="input-group">
           <div className="input-group__item">
             <input
